@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "echo \"Navigate into an example and run the tests from there!\" && exit 1"
+    "test": "vitest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
