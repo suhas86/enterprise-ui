@@ -47,7 +47,7 @@ export class Person {
       args = parseFullName(args);
     }
 
-    const { firstName, middleName, lastName, age } = args;
+    const { firstName, middleName, lastName } = args;
 
     this.firstName = firstName;
     this.middleName = middleName;
