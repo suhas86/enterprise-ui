@@ -1,22 +1,30 @@
+```javascript
 import type { ReactElement } from 'react';
 import { render as renderComponent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+```
 
-// Define a type alias for the options that can be passed to the render function.
+Define a type alias for the options that can be passed to the render function.
+
+```javascript
 type RenderOptions = Parameters<typeof renderComponent>[1];
+```
 
-// Re-export everything from `@testing-library/react` to keep API consistency.
-export \* from '@testing-library/react';
+Re-export everything from `@testing-library/react` to keep API consistency.
 
-// Custom render function that enhances the default `render` method.
-// This function returns an object that includes the rendered component and a `user` object for simulating user interactions.
+```javascript
+export * from '@testing-library/react';
+```
+
+Custom render function that enhances the default `render` method.
+This function returns an object that includes the rendered component and a `user` object for simulating user interactions.
+```javascript
 export const render = (ui: ReactElement, options?: RenderOptions) => {
 return {
 ...renderComponent(ui, options), // Render the React component with optional configuration.
 user: userEvent.setup(), // Setup user interactions for simulating events like clicks and typing.
 };
 };
-
 ````
 
 ## Explanation

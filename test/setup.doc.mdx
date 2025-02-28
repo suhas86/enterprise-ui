@@ -1,18 +1,25 @@
-// Import the `expect` function from Vitest, which is used for writing test assertions.
+Import the `expect` function from Vitest, which is used for writing test assertions.
+
+```javascript 
 import { expect } from "vitest";
-
-// Import all matchers from `@testing-library/jest-dom/matchers`.
+````
+Import all matchers from `@testing-library/jest-dom/matchers`.
 // These matchers extend Jest's built-in assertions to make them more readable and useful for testing DOM elements.
+```javascript 
 import \* as matchers from "@testing-library/jest-dom/matchers";
+````
 
-// Import `@testing-library/jest-dom` to enable additional matchers like `.toBeInTheDocument()`, `.toHaveTextContent()`, etc.
+Import `@testing-library/jest-dom` to enable additional matchers like `.toBeInTheDocument()`, `.toHaveTextContent()`, etc.
+```javascript 
 import "@testing-library/jest-dom";
+````
 
-// Extend Vitest's `expect` function with the additional matchers from `jest-dom`.
-// This allows us to use matchers like `expect(element).toBeInTheDocument()`.
+Extend Vitest's `expect` function with the additional matchers from `jest-dom`.
+This allows us to use matchers like `expect(element).toBeInTheDocument()`.
+```javascript 
 expect.extend(matchers);
+````
 
-```
 
 ## Explanation
 
@@ -36,4 +43,4 @@ expect.extend(matchers);
 ## **Why This Is Needed?**
 - Vitest supports global `expect`, but Jest-DOM matchers are not included by default.
 - Manually extending `expect` ensures that all tests have access to DOM-specific assertions.
-```
+
