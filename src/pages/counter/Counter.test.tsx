@@ -38,3 +38,10 @@ test('[ANOTHER WAY OF DOING IT] it should increment when the "Increment" button 
 //   await user.click(button);
 //   expect(currentCount.textContent).toBe('1');
 // });
+
+test.todo('it should render the component with an initial count', () => {});
+
+test.todo(
+  'it should reset the count when the "Reset" button is pressed',
+  async () => {}
+);
