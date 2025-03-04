@@ -1,10 +1,11 @@
-import './App.css';
-import Counter from './pages/counter/Counter';
+import PackingList from './packaging-list';
+// import Counter from './pages/counter/Counter';
 
 function App() {
   return (
     <>
-      <Counter />
+      {/* <Counter /> */}
+      <PackingList />
     </>
   );
 }
