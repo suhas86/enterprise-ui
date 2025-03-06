@@ -62,3 +62,5 @@ it('Remove an item', async () => {
 
   expect(item).not.toBeInTheDocument();
 });
+
+// Change the name of the item to Apple watch and check what happens
