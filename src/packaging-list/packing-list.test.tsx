@@ -1,6 +1,19 @@
-import PackingList from '.';
+import { PackingList } from '.';
 import { expect, it } from 'vitest';
-import { render, screen } from '../../test/utilities';
+import { render as baseRender, screen } from '../../test/utilities';
+import { createStore } from './store';
+import { PropsWithChildren } from 'react';
+import { Provider } from 'react-redux';
+
+const render: typeof baseRender = (Component, options) => {
+  const store = createStore();
+
+  const Wrapper = ({ children }: PropsWithChildren) => {
+    return <Provider store={store}>{children}</Provider>;
+  };
+
+  return baseRender(Component, { ...options, wrapper: Wrapper });
+};
 
 it('renders the Packing List application', () => {
   render(<PackingList />);
@@ -50,17 +63,15 @@ it('Remove an item', async () => {
   const newItemInput = screen.getByLabelText('New Item Name');
   const addNewButton = screen.getByRole('button', { name: 'Add New Item' });
 
-  await user.type(newItemInput, 'Apple watch 10');
+  await user.type(newItemInput, 'Apple watch');
   await user.click(addNewButton);
 
-  const item = screen.getByLabelText('Apple watch 10');
+  const item = screen.getByLabelText('Apple watch');
   const removeButton = screen.getByRole('button', {
-    name: 'Remove Apple watch 10',
+    name: 'Remove Apple watch',
   });
 
   await user.click(removeButton);
 
   expect(item).not.toBeInTheDocument();
 });
-
-// Change the name of the item to Apple watch and check what happens

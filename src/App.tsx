@@ -1,11 +1,10 @@
-import PackingList from './packaging-list';
-// import Counter from './pages/counter/Counter';
+import Application from './packaging-list';
 
 function App() {
   return (
     <>
       {/* <Counter /> */}
-      <PackingList />
+      <Application />
     </>
   );
 }
