@@ -1,13 +1,24 @@
-// Import the `expect` function from Vitest, which is used for writing test assertions.
-import { expect } from "vitest";
+// Import the `expect` function from Vitest for writing test assertions.
+import { expect, beforeAll, afterEach, afterAll } from "vitest";
 
 // Import all matchers from `@testing-library/jest-dom/matchers`.
-// These matchers extend Jest's built-in assertions to make them more readable and useful for testing DOM elements.
 import * as matchers from "@testing-library/jest-dom/matchers";
 
-// Import `@testing-library/jest-dom` to enable additional matchers like `.toBeInTheDocument()`, `.toHaveTextContent()`, etc.
+// Import `@testing-library/jest-dom` to enable additional matchers.
 import "@testing-library/jest-dom";
 
-// Extend Vitest's `expect` function with the additional matchers from `jest-dom`.
-// This allows us to use matchers like `expect(element).toBeInTheDocument()`.
+// Extend Vitest's `expect` function with the additional matchers.
 expect.extend(matchers);
+
+// Import MSW's server setup
+import { server } from "../src/mocks/server";
+
+
+// Start the server before all tests run
+beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+
+// Reset handlers after each test (in case we modify them in a test)
+afterEach(() => server.resetHandlers());
+
+// Close the server after all tests finish
+afterAll(() => server.close());

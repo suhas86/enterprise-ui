@@ -14,9 +14,16 @@ const TimeZone = ({ getTodos }: { getTodos?: boolean }) => {
     const interval = setInterval(() => {
       setCurrentTime(Date.now());
     }, 1000);
-    if (getTodos) getTasksFromApi().then(setTasks);
+    if (getTodos) {
+      console.log('Fetching tasks from API');
+      getTasksFromApi().then((data) => {
+        setTasks([...data]);
+      });
+    }
     return () => clearInterval(interval);
-  }, []);
+  }, [getTodos]);
+
+  console.log('Rendered with tasks:', tasks);
 
   return (
     <Frame>

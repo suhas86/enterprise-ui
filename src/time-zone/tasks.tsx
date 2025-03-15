@@ -15,7 +15,7 @@ export const TaskListItem = ({ title, completed, id }: Task) => {
 
 const TaskList = ({ tasks }: { tasks: Task[] }) => {
   return (
-    <ul>
+    <ul data-testid="task-list">
       {tasks.map((task) => (
         <TaskListItem key={task.id} {...task} />
       ))}
