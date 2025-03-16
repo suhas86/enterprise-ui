@@ -17,6 +17,13 @@ export default defineConfig({
             ['**/*.test.tsx', 'jsdom'],
             ['**/*.component.test.ts', 'jsdom'],
         ],
+        exclude: [
+            'node_modules/**',       // Prevents running tests from dependencies
+            'dist/**',               // Exclude built files
+            'e2e/**',                // Exclude Playwright E2E tests
+            '**/*.spec.ts',          // Ignore Playwright test files if using `.spec.ts`
+            '**/playwright/**',      // Ignore Playwright directory if it exists
+        ],
     },
     coverage: {
         statements: 54.92,
@@ -27,6 +34,7 @@ export default defineConfig({
             'vite.*.ts',
             '**/*.d.ts',
             '**/*.test.*',
+            '**/*.spec.*',  // Also exclude .spec.ts for coverage
             '**/*.config.*',
             '**/snapshot-tests/**',
             '**/*.solution.tsx',
