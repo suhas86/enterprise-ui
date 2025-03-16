@@ -43,5 +43,5 @@ test.todo('it should render the component with an initial count', () => {});
 
 test.todo(
   'it should reset the count when the "Reset" button is pressed',
-  async () => {}
+  async () => {},
 );

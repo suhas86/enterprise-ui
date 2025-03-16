@@ -1,3 +1,3 @@
 export const logger = (message: string) => {
-    console.log(message);
+  console.log(message);
 };

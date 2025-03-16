@@ -1,6 +1,6 @@
 import path from 'node:path';
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,4 +12,4 @@ export default defineConfig({
       $components: path.resolve(__dirname, './src/components'),
     },
   },
-})
+});

@@ -12,4 +12,3 @@ export const render = (ui: ReactElement, options?: RenderOptions) => {
     user: userEvent.setup(),
   };
 };
- 
