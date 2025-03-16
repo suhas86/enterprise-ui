@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "cross-env VITEST_PLATFORM=windows vitest",
-    "test:ci": "cross-env VITEST_PLATFORM=linux vitest --update-snapshots",
+    "test:ci": "cross-env VITEST_PLATFORM=linux vitest --update",
     "test:ui": "vitest --ui"
   },
   "dependencies": {
