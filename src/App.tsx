@@ -1,6 +1,6 @@
-import Application from './packaging-list';
+// import Application from './packaging-list';
 import PokemonSearch from './pokemon-search';
-import TimeZone from './time-zone';
+// import TimeZone from './time-zone';
 
 function App() {
   return (
