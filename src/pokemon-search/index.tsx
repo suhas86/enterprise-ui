@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Button from '../components/button';
 
 const PokemonSearch = () => {
+  // check now
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [query, setQuery] = useState(searchParams.get('q') || '');
@@ -20,7 +21,7 @@ const PokemonSearch = () => {
   useEffect(() => {
     if (query.trim()) {
       const filtered = pokemonList.filter((p) =>
-        p.name.includes(query.toLowerCase())
+        p.name.includes(query.toLowerCase()),
       );
       setFilteredPokemon(filtered);
     } else {
