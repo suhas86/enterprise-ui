@@ -1,0 +1,67 @@
+```javascript
+import type { ReactElement } from 'react';
+import { render as renderComponent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+```
+
+Define a type alias for the options that can be passed to the render function.
+
+```javascript
+type RenderOptions = Parameters<typeof renderComponent>[1];
+```
+
+Re-export everything from `@testing-library/react` to keep API consistency.
+
+```javascript
+export * from '@testing-library/react';
+```
+
+Custom render function that enhances the default `render` method.
+This function returns an object that includes the rendered component and a `user` object for simulating user interactions.
+```javascript
+export const render = (ui: ReactElement, options?: RenderOptions) => {
+return {
+...renderComponent(ui, options), // Render the React component with optional configuration.
+user: userEvent.setup(), // Setup user interactions for simulating events like clicks and typing.
+};
+};
+````
+
+## Explanation
+
+### 1. **Importing Required Modules**
+- `ReactElement`: Represents a React component that needs to be rendered in tests.
+- `renderComponent`: The default `render` function from `@testing-library/react` to render components.
+- `userEvent`: A utility from `@testing-library/user-event` to simulate user interactions like clicks and keyboard inputs.
+
+### 2. **Defining `RenderOptions` Type**
+- Extracts the type of the second parameter from `renderComponent`.
+- This helps TypeScript infer valid options when passing them to the custom `render` function.
+
+### 3. **Re-exporting Testing Library Methods**
+- `export * from '@testing-library/react'` ensures all default exports from Testing Library remain available.
+
+### 4. **Creating a Custom `render` Function**
+- Calls `renderComponent(ui, options)`, allowing it to render a React component with optional settings.
+- Enhances the returned object by adding `user: userEvent.setup()` to enable user interactions.
+
+## **Why Use This Custom Render Function?**
+- Automatically provides `userEvent` to simulate interactions, reducing boilerplate code in tests.
+- Keeps test files clean and consistent by ensuring all tests use the same render setup.
+- Allows easy extension in the future (e.g., adding custom contexts or providers).
+
+### **Usage Example**
+```tsx
+import { render, screen } from "./test-utils";
+import MyComponent from "../MyComponent";
+
+// Example test using the custom render function
+test("renders component and interacts", async () => {
+  const { user } = render(<MyComponent />);
+
+  const button = screen.getByRole("button", { name: "Click Me" });
+  await user.click(button);
+
+  expect(screen.getByText("Clicked!"));
+});
+````

@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match the snapshot 1`] = `
+<div>
+  <section
+    class="flex flex-col gap-8 rounded-lg border-4 border-primary-50 p-8"
+  >
+    <h1
+      data-testid="current-time"
+    >
+      1665340200000
+    </h1>
+    <p
+      data-testid="prose"
+    >
+      You've been staring at this page for 
+      0
+       second(s).
+    </p>
+  </section>
+</div>
+`;
